@@ -227,3 +227,8 @@ endfunction
 silent doautocmd User VdebugPost
 call Vdebug_load_options(g:vdebug_options)
 call Vdebug_load_keymaps(g:vdebug_keymap)
+
+" enhance appearance of breakpoint sign
+sign define breakpt text=● linehl=DbgBreakptLine texthl=DbgBreakptSign
+" enhance appearance of current running line
+sign define current text=➤ linehl=DbgCurrentLine texthl=DbgCurrentSign
