@@ -18,6 +18,12 @@ It's written in Python, and has an object-oriented interface that is easy to ext
 and can even be used from the command-line. It even has unit tests covering
 some of the more critical parts of the code.
 
+## About this fork
+
+Vdebug is really a powerful tool for vim, however the appearance of breakpoint and current running line is really poor:(
+
+So I made this fork to enhance the default appearance and make it more customizable. You can simply download origin one from here: [Vdebug](https://github.com/joonty/vdebug)
+
 ## Getting help
 
 If you're having trouble with Vdebug in any way, here are the steps you can take to get help (in the right order):
@@ -152,6 +158,8 @@ If you have a problem, and would like to see what's going on under the hood or r
 Then start debugging, and you can follow what's added to the log file as you go. It shows the communication between the debugging engine and Vdebug.
 
 If you're creating an issue then it's probably best to upload a log as a Gist, as it can be pretty large.
+
+## Customization
 
 ## Contributing
 
