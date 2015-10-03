@@ -120,16 +120,17 @@ command! -nargs=+ -complete=customlist,s:OptionNames VdebugOpt python debugger.h
 command! -nargs=? VdebugTrace python debugger.handle_trace(<q-args>)
 
 if hlexists("DbgCurrentLine") == 0
-    hi default DbgCurrentLine term=reverse ctermfg=White ctermbg=Red guifg=#ffffff guibg=#ff0000
+    "hi default DbgCurrentLine term=reverse ctermfg=White ctermbg=Red guifg=#ffffff guibg=#ff0000
 end
 if hlexists("DbgCurrentSign") == 0
-    hi default DbgCurrentSign term=reverse ctermfg=White ctermbg=Red guifg=#ffffff guibg=#ff0000
+    "hi default DbgCurrentSign term=reverse ctermfg=White ctermbg=Red guifg=#ffffff guibg=#ff0000
 end
 if hlexists("DbgBreakptLine") == 0
-    hi default DbgBreakptLine term=reverse ctermfg=White ctermbg=Green guifg=#ffffff guibg=#00ff00
+    "hi default DbgBreakptLine term=reverse ctermfg=White ctermbg=Green guifg=#ffffff guibg=#00ff00
 end
 if hlexists("DbgBreakptSign") == 0
-    hi default DbgBreakptSign term=reverse ctermfg=White ctermbg=Green guifg=#ffffff guibg=#00ff00
+    "hi default DbgBreakptSign term=reverse ctermfg=White ctermbg=Green guifg=#ffffff guibg=#00ff00
+    hi default DbgBreakptSign term=reverse ctermfg=Red guifg=#ff0000
 end
 
 " Signs and highlighted lines for breakpoints, etc.
