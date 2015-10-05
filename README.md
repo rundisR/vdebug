@@ -22,9 +22,9 @@ some of the more critical parts of the code.
 
 Vdebug is really a powerful tool for vim, however the appearance of breakpoint and current running line is really poor:(
 
-Also, running another terminal for dbgp is kinda uncomfortable limit, so I add the output windows when debugging base on anohter vim plugin [VimShell](https://github.com/Shougo/vimshell.vim). You have to install VimShell first. However, I only add python's pydbgp, so there's no output window for other languages.:(
+Also, running another terminal for dbgp is kinda uncomfortable limit, so I add the output windows when debugging base on anohter vim plugin [VimShell](https://github.com/Shougo/vimshell.vim). You have to install [VimShell](https://github.com/Shougo/vimshell.vim) first. However, I only add python's pydbgp, so there's no output window for other languages.:(
 
-Thus I simply enhance the appearance and add output window for Vdebug. You can download origin one from here: [Vdebug](https://github.com/joonty/vdebug) if you don't like these features.
+Thus I simply enhance the appearance and add output window for [Vdebug](https://github.com/rundisR/vdebug). You can download origin one from here: [Vdebug](https://github.com/joonty/vdebug) if you don't like these features.
 
 ## Getting help
 
