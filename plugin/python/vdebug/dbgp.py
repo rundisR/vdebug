@@ -696,7 +696,7 @@ class EvalProperty(ContextProperty):
 def autorun_dbgp():
     """automatically run ~/.vim/Debugger/dbgp when VimShell(a plugin enable shell in vim) presents for python file."""
     if os.path.exists(os.path.expanduser('~/.vim/Debugger/pydbgp')):
-        time.sleep(3) #wait until socket is initialized
+        # time.sleep(3) #wait until socket is initialized
         exec_dbgp()
     else:
         print 'No pydbgp in ~/.vim/Debugger, cannot automatically run pydbgp.'
