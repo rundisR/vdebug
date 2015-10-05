@@ -40,12 +40,12 @@ class Runner:
                 vdebug.log.Log.set_logger(vdebug.log.FileLogger(\
                         vdebug.opts.Options.get('debug_file_level'),\
                         vdebug.opts.Options.get('debug_file')))
+            self.ui.open()
             self.listen(\
                     vdebug.opts.Options.get('server'),\
                     vdebug.opts.Options.get('port',int),\
                     vdebug.opts.Options.get('timeout',int))
 
-            self.ui.open()
             self.keymapper.map()
             self.ui.set_listener_details(\
                     vdebug.opts.Options.get('server'),\
