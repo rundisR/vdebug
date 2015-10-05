@@ -7,6 +7,9 @@ import socket
 import vdebug.log
 import base64
 import time
+import threading
+import os.path
+import vim
 
 """ Response objects for the DBGP module."""
 
@@ -203,7 +206,12 @@ class Api:
         self.startfile = None
         self.conn = connection
         if self.conn.isconnected() == 0:
-            self.conn.open()
+            conn_thread = threading.Thread(target=self.conn.open)
+            exec_dbgp_thread = threading.Thread(target=autorun_dbgp)
+            conn_thread.start()
+            exec_dbgp_thread.start()
+            conn_thread.join()
+            exec_dbgp_thread.join()
         self.__parse_init_msg(self.conn.recv_msg())
 
     def __parse_init_msg(self,msg):
@@ -230,7 +238,7 @@ class Api:
         response message and command.
 
         cmd -- the command name, e.g. 'status'
-        args -- arguments for the command, which is optional 
+        args -- arguments for the command, which is optional
                 for certain commands (default '')
         """
         args = args.strip()
@@ -296,7 +304,7 @@ class Api:
         """ The python engine incorrectly requires length.
         if self.language == 'python':
             args = ("-l %i " % len(code_enc) ) + args"""
-            
+
         return self.send_cmd('eval',args,EvalResponse)
 
     def step_into(self):
@@ -684,6 +692,23 @@ class EvalProperty(ContextProperty):
                 else:
                     self.display_name = self.parent.display_name + \
                         "." + name
+
+def autorun_dbgp():
+    """automatically run ~/.vim/Debugger/dbgp when VimShell(a plugin enable shell in vim) presents for python file."""
+    if os.path.exists(os.path.expanduser('~/.vim/Debugger/pydbgp')):
+        time.sleep(3) #wait until socket is initialized
+        exec_dbgp()
+    else:
+        print 'No pydbgp in ~/.vim/Debugger, cannot automatically run pydbgp.'
+
+def exec_dbgp():
+    """run ~/.vim/Debugger/pydbgp for python file in VimShell"""
+    current_filename = vim.eval("expand('%:p')")
+    if current_filename[-2:] == 'py':
+        vim.command('VimShellSendString python -S ~/.vim/Debugger/pydbgp -d localhost:9000 %s' % current_filename)
+    else:
+        vim.command("VimShellSendString echo 'You can run dbgp here'")
+
 
 
 """ Errors/Exceptions """
